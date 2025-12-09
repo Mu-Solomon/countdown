@@ -9,14 +9,19 @@ function App() {
   return (
     <>
       <div className="bg-[url('/images/pattern-hills.svg')]  bg-[#231d2b]  h-screen bg-bottom-right bg-no-repeat">
-        <div className="bg-[url('/images/bg-stars.svg')] bg-contain flex flex-col items-center justify-around h-full">
+        <div className="bg-[url('/images/bg-stars.svg')] bg-auto flex flex-col items-center justify-around h-full">
           <div className="mt-32">
-            <h1 className="text-4xl text-white">We're launching soon</h1>
+            <h1 className="text-2xl text-white uppercase font-semibold tracking-[8px] line-clamp-2 overflow-hidden text-center">
+              We're launching soon
+            </h1>
           </div>
-          <div>
+          <div className="flex gap-6">
             <div>
               {" "}
-              <h2>08</h2> <p>DAYS</p>{" "}
+              <h2 className="bg-[#343650ff] text-[#fb6087ff] text-4xl font-bold ">
+                08
+              </h2>{" "}
+              <p className="bg-[#343650ff]">DAYS</p>{" "}
             </div>
             <div>
               {" "}
