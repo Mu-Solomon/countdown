@@ -21,7 +21,7 @@ export default function FlipCard({ value, label }) {
   return (
     <div className="flex flex-col items-center">
       {/* IMPORTANT: group must be on the wrapper */}
-      <div className="group perspective h-16 w-18 md:h-22 md:w-24">
+      <div className="group perspective h-16 w-18 md:h-36 md:w-40">
         {/* rotating element */}
         <div
           className={`relative h-full w-full transition-transform duration-700 transform-style-preserve-3d ${
@@ -30,20 +30,20 @@ export default function FlipCard({ value, label }) {
         >
           {/* FRONT */}
           <div className="absolute inset-0 flex flex-col items-center justify-center bg-[#191a24ff] rounded-md backface-hidden shadow-xl">
-            <span className="bg-[#343650ff] w-full h-1/2 rounded-md"></span>
+            <span className="bg-[#343650ff] w-full h-1/2 rounded-md md:rounded-xl"></span>
 
-            <h2 className="text-[#fb6087ff] text-4xl md:text-5xl font-bold absolute">
+            <h2 className="text-[#fb6087ff] text-4xl md:text-7xl font-bold absolute">
               {padded}
             </h2>
 
-            <span className="bg-[#343650ff] w-full h-1/2 mt-px rounded-md shadow-xl"></span>
+            <span className="bg-[#343650ff] w-full h-1/2 mt-px rounded-md md:rounded-xl shadow-xl"></span>
           </div>
 
           {/* BACK */}
           <div className="absolute inset-0 flex flex-col items-center justify-center bg-[#343650ff] rounded-md rotate-x-180 backface-hidden shadow-xl">
             <span className="bg-[#343650ff] w-full h-1/2 rounded-md"></span>
 
-            <h2 className="text-[#fb6087ff] text-4xl font-bold md:text-5xl absolute">
+            <h2 className="text-[#fb6087ff] text-4xl md:text-7xl font-bold absolute">
               {padded}
             </h2>
 
