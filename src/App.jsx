@@ -3,10 +3,10 @@ import "./App.css";
 
 function App() {
   const [countDown, setCountDown] = useState({
-    days: 0,
+    days: 14,
     hours: 0,
     minutes: 0,
-    seconds: 9,
+    seconds: 0,
   });
 
   useEffect(() => {
@@ -18,6 +18,7 @@ function App() {
           minutes: prev.minutes - 1,
           seconds: 59,
         }));
+        return;
       } else if (
         countDown.minutes === 0 &&
         countDown.seconds < 1 &&
@@ -30,6 +31,7 @@ function App() {
           minutes: 59,
           seconds: 59,
         }));
+        return;
       } else if (
         countDown.days === 0 &&
         countDown.hours === 0 &&
@@ -52,6 +54,7 @@ function App() {
           minutes: 59,
           seconds: 59,
         }));
+        return;
       } else {
         setCountDown((prev) => ({
           ...prev,
@@ -60,6 +63,7 @@ function App() {
           minutes: prev.minutes - 1,*/
           seconds: prev.seconds - 1,
         }));
+        return;
       }
     }, 1000);
     return () => clearTimeout(secondsTimer);
