@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import "./App.css";
+import FlipCard from "./FlipCard";
 
 function App() {
   const [countDown, setCountDown] = useState({
@@ -18,6 +19,7 @@ function App() {
           minutes: prev.minutes - 1,
           seconds: 59,
         }));
+        setFlipped(!flipped);
         return;
       } else if (
         countDown.minutes === 0 &&
@@ -71,82 +73,26 @@ function App() {
 
   return (
     <>
-      <div className="bg-[url('/images/pattern-hills.svg')]  bg-[#231d2b]  h-screen bg-bottom-right bg-no-repeat">
+      <div
+        className="bg-[url('/images/pattern-hills.svg')]  bg-[#231d2b]   min-h-screen 
+    bg-[url('/images/pattern-hills.svg')] 
+    bg-no-repeat 
+    bg-bottom 
+    bg-[length:300%] md:bg-[length:100%]"
+      >
         <div className="bg-[url('/images/bg-stars.svg')] bg-auto flex flex-col items-center justify-between  h-full  pt-32 pb-12 md:pt-2 ">
           <div className="mt-32">
-            <h1 className="text-2xl text-white uppercase font-semibold tracking-[8px] line-clamp-2 overflow-hidden text-center md:py-4">
+            <h1 className="text-2xl text-white uppercase font-bold tracking-[8px] line-clamp-2 overflow-hidden text-center pt-8 md:py-4">
               We're launching soon
             </h1>
           </div>
-          <div className="flex gap-4 md:gap-6">
-            <div className="flex flex-col justify-center items-center">
-              <div className="bg-[#191a24ff] h-16 w-18 flex flex-col items-center rounded-md shadow-xl shadow-[#191a24ff]-500/50  md:h-22 md:w-24">
-                {" "}
-                <span className="bg-[#343650ff] w-full h-1/2  rounded-md">
-                  {" "}
-                </span>
-                <h2 className="text-[#fb6087ff] text-4xl font-bold py-3 absolute mx-auto text-center md:text-5xl md:py-5">
-                  {countDown.days < 10 ? `0${countDown.days}` : countDown.days}
-                </h2>
-                <span className="bg-[#343650ff] w-full h-1/2 mt-px rounded-md shadow-xl "></span>
-              </div>
-              <p className="text-[#ffffffff] mt-4 tracking-[5px] text-[8px] w-18 text-center  md:text-[12px]">
-                DAYS
-              </p>{" "}
-            </div>
-            <div className="flex flex-col justify-center items-center">
-              <div className="bg-[#191a24ff] h-16 w-18 flex flex-col items-center rounded-md shadow-xl shadow-[#191a24ff]-500/50 md:h-22 md:w-24 ">
-                {" "}
-                <span className="bg-[#343650ff] w-full h-1/2  rounded-md">
-                  {" "}
-                </span>
-                <h2 className="text-[#fb6087ff] text-4xl font-bold py-3 absolute mx-auto text-center md:text-5xl md:py-5">
-                  {countDown.hours < 10
-                    ? `0${countDown.hours}`
-                    : countDown.hours}
-                </h2>
-                <span className="bg-[#343650ff] w-full h-1/2 mt-px rounded-md shadow-xl "></span>
-              </div>
-              <p className="text-[#ffffffff] mt-4 tracking-[5px] text-[8px] w-18 text-center  md:text-[12px]">
-                HOURS
-              </p>{" "}
-            </div>
-            <div className="flex flex-col justify-center ">
-              <div className="bg-[#191a24ff] h-16 w-18 flex flex-col items-center rounded-md shadow-xl shadow-[#191a24ff]-500/50 md:h-22 md:w-24 ">
-                {" "}
-                <span className="bg-[#343650ff] w-full h-1/2  rounded-md">
-                  {" "}
-                </span>
-                <h2 className="text-[#fb6087ff] text-4xl font-bold py-3 absolute mx-auto text-center md:text-5xl md:py-5">
-                  {countDown.minutes < 10
-                    ? `0${countDown.minutes}`
-                    : countDown.minutes}
-                </h2>
-                <span className="bg-[#343650ff] w-full h-1/2 mt-px rounded-md shadow-xl "></span>
-              </div>
-              <p className="text-[#ffffffff]  mt-4 tracking-[5px] text-[8px] w-18 text-center  md:text-[12px]">
-                MINUTES
-              </p>{" "}
-            </div>
-            <div className="flex flex-col justify-center ">
-              <div className="bg-[#191a24ff] h-16 w-18 flex flex-col items-center rounded-md shadow-xl shadow-[#191a24ff]-500/50 md:h-22 md:w-24 ">
-                {" "}
-                <span className="bg-[#343650ff] w-full h-1/2  rounded-md">
-                  {" "}
-                </span>
-                <h2 className="text-[#fb6087ff] text-4xl font-bold py-3 absolute mx-auto text-center md:text-5xl md:py-5">
-                  {countDown.seconds < 10
-                    ? `0${countDown.seconds}`
-                    : countDown.seconds}
-                </h2>
-                <span className="bg-[#343650ff] w-full h-1/2 mt-px rounded-md shadow-xl "></span>
-              </div>
-              <p className="text-[#ffffffff] mt-4 tracking-[5px] text-[8px] w-18 text-center  md:text-[12px]">
-                SECONDS
-              </p>{" "}
-            </div>
+          <div className="flex gap-4 md:gap-6 mt-22">
+            <FlipCard value={countDown.days} label="DAYS" />
+            <FlipCard value={countDown.hours} label="HOURS" />
+            <FlipCard value={countDown.minutes} label="MINUTES" />
+            <FlipCard value={countDown.seconds} label="SECONDS" />
           </div>
-          <div className="flex gap-6 mb-2 pt-44">
+          <div className="flex gap-6 mb-2 pt-44 md:pt-60">
             <svg
               className="fill-[#8385A9] hover:fill-[#fb6087ff] hover:cursor-pointer"
               xmlns="http://www.w3.org/2000/svg"

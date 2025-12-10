@@ -10,3 +10,4 @@ export default defineConfig({
     port: 5173, // (Optional) Explicitly set the port
   },
 });
+
